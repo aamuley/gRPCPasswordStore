@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service SecretStore {
+    rpc StoreSecret (StoreRequest) returns (StoreResponse) {}
+    rpc RetrieveSecret (RetrieveRequest) returns (RetrieveResponse) {}
+}
+
+message StoreRequest {
+    string name = 1; // Encrypted key
+    string secret = 2; // Encrypted secret
+}
+message StoreResponse {
+    string name = 1;
+    bool success = 2; // bool is successful
+}
+
+message RetrieveRequest {
+    string name = 1; //  Encrypted key
+}
+message RetrieveResponse {
+    string name = 1; // Secret
+    bool success = 2; // bool is successful 
+}
