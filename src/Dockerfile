@@ -6,11 +6,12 @@ WORKDIR /src
 # Copy and install requirements
 COPY requirements.txt requirements.txt  
 RUN pip install --upgrade pip
-RUN apt-get update && apt-get install -y openssl
+RUN apt-get update
 RUN pip install -r requirements.txt
+RUN pip3 install grpcio
 RUN pip install grpcio-tools
 RUN pip install grpclib
-# RUN pip install cryptography
+RUN pip install cryptography
 
 # Copy app code
 COPY . .
